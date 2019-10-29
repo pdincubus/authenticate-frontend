@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Sign up complete - {{serviceName}}
+{% endblock %}
+
+{% block header %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {{ govukPanel({
+                titleText: "You are now signed up"
+            }) }}
+
+            <h2 class="govuk-heading-m">Using the HTDS service</h2>
+
+            <p>You can use this service now.</p>
+
+            <h2 class="govuk-heading-m">Your sign in details</h2>
+
+            <p>You'll sign in using <strong>your.email.address@dwp.gov.uk</strong></p>
+
+            {{ govukButton({
+                text: "Sign in",
+                href: "#",
+                isStartButton: true
+            }) }}
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <h2 class="govuk-heading-m">HTDS support team</h2>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Available: 9:00am - 5:00pm</li>
+                <li>Telephone: <a href="tel:01234567890" class="govuk-link">01234 567 890</a></li>
+                <li>Email: <a href="mailto:htds@dwp.gov.uk" class="govuk-link">htds@dwp.gov.uk</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

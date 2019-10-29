@@ -1,44 +1,101 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+    {{serviceName}}
 {% endblock %}
 
 {% block content %}
+    {{releaseVersion | log}}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        The GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
+    <h1 class="govuk-heading-xl">
+        {{serviceName}}
+    </h1>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+    <div class="govuk-tabs" data-module="tabs">
+        <h2 class="govuk-tabs__title">
+            Prototype versions
+        </h2>
 
-      <h2 class="govuk-heading-m">About this page</h2>
+        {% set currentVersionHtml %}
+            <time datetime="2019-10-29" class="govuk-caption-l">29 October 2019</time>
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+            <h2 class="govuk-heading-l">v1</h2>
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
+            <a href="/v1/signup" class="govuk-button">Sign up</a>
+            <a href="/v1/signin" class="govuk-button">Sign in</a>
+            <a href="/v1/password-reset" class="govuk-button">Password reset</a>
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
+            <h3 class="govuk-heading-m">Confidence level</h3>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
-        <li>
-          <a href="https://design-system.service.gov.uk">
-            GOV.UK Design System
-          </a>
-        </li>
-      </ul>
+            <details class="govuk-details" role="group">
+                <summary
+                    class="govuk-details__summary"
+                    role="button"
+                    aria-controls="details-content-confidence-levels"
+                    aria-expanded="false"
+                >
+                    <span class="govuk-details__summary-text">
+                        What is this?
+                    </span>
+                </summary>
+
+                <div
+                    class="govuk-details__text"
+                    id="details-content-confidence-levels"
+                    aria-hidden="true"
+                >
+                    Confidence can rise and fall in the course of a user journey, depending on what we know at that time. This helps the team, and the wider organisation, understand and prioritise what needs more work.
+                </div>
+            </details>
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header" scope="col">User journey step</th>
+                        <th class="govuk-table__header" scope="col">Confidence</th>
+                    </tr>
+                </thead>
+
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/v1/signup">Sign up</a></td>
+                        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--low">low</span></td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/v1/signin">Sign in</a></td>
+                        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--low">low</span></td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/v1/password-reset">Password reset</a></td>
+                        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--low">low</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endset %}
+
+        {% set previousVersionsHtml %}
+            <p>No previous versions yet!</p>
+        {% endset %}
+
+        {{ govukTabs({
+            items: [
+                {
+                    label: "Current version",
+                    id: "current-version",
+                    panel: {
+                        html: currentVersionHtml
+                    }
+                },
+                {
+                    label: "Previous versions",
+                    id: "previous-versions",
+                    panel: {
+                        html: previousVersionsHtml
+                    }
+                }
+            ]
+        }) }}
     </div>
-</div>
-
 {% endblock %}

@@ -15,32 +15,4 @@ $govuk-assets-path: '/govuk/assets/';
 // Components that aren't in Frontend
 @import "components/cookie-banner";
 
-/**
- * Tags for confidence states
- */
-.govuk-tag--high {
-    background-color: #006435;
-}
-
-.govuk-tag--medium {
-    background-color: #ffbf47;
-    color: #0b0c0c;
-}
-
-.govuk-tag--low {
-    background-color: #b10e1e;
-}
-
-
-/**
- * Fix the big margin between details components when inside list items
- * Fix the awkward height of an individual list item when in a list with details
- * elements
- */
-.govuk-list.signin li .govuk-details {
-    margin-bottom: 0;
-}
-
-.govuk-list.signin li {
-    min-height: 30px;
-}
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

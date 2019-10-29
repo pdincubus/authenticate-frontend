@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Sign up - {{serviceName}}
+{% endblock %}
+
+{% block header %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+    <form action="signup-complete" method="post">
+        {{ govukFieldset({
+            legend: {
+                html: 'Create a new password',
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
+            }
+        })}}
+
+        <p>Your password must be at least 8 characters long.</p>
+        <p>It must also contain:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>1 upper case letter</li>
+            <li>1 lower case letter</li>
+            <li>1 number</li>
+            <li>1 special character (e.g '!', '?' or '%')</li>
+        </ul>
+
+        <p>Example password: Aa1!abcd</p>
+
+        {{ govukInput({
+            label: {
+                text: "Enter new password"
+            },
+            id: "new-password",
+            name: "new-password",
+            classes: "govuk-!-width-one-half",
+            type: "password"
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Confirm new password"
+            },
+            id: "confirm-new-password",
+            name: "confirm-new-password",
+            classes: "govuk-!-width-one-half",
+            type: "password"
+        }) }}
+
+        {{ govukButton({
+            text: "Create password"
+        }) }}
+    </form>
+{% endblock %}
